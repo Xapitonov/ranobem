@@ -169,7 +169,7 @@ public class ReaderActivity extends AppCompatActivity implements VrfFetcher.onCo
                 LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 if (layoutManager != null) {
                     int visibleItem = layoutManager.findLastVisibleItemPosition();
-                    int totalPages = currentChapter.pages.size();
+                    int totalPages = currentChapter.pages != null ? currentChapter.pages.size() : 0;
                     int progress = (int) (((float) (visibleItem + 1) / totalPages) * 100);
                     if (progress > 1) {
                         binding.progress.setVisibility(RecyclerView.VISIBLE);
