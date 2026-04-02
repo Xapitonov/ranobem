@@ -1,3 +1,4 @@
-Read mang for free.
+Read manga for free.
 
-[Download for free](https://github.com/ranobe-org/ranobem/releases/latest)
+[Download from Github](https://github.com/ranobe-org/ranobem/releases/latest)
+[Download from Play Store](https://play.google.com/store/apps/details?id=in.atulpatare.ranobem.pro)
