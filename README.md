@@ -1,1 +1,3 @@
-beautiful readme on the way [download the app from here](https://play.google.com/store/apps/details?id=in.atulpatare.ranobem.pro)
+Read mang for free.
+
+[Download for free](https://github.com/ranobe-org/ranobem/releases/latest)
