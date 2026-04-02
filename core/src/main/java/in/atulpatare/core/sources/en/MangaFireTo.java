@@ -35,8 +35,8 @@ public class MangaFireTo implements Source {
                 "en",
                 "",
                 "atul",
-                true,
-                true,
+                false,
+                false,
                 false,
                 new HashMap<>()
         );

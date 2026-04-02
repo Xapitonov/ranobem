@@ -36,10 +36,10 @@ public class BrowseTabbedFragment extends Fragment {
             try {
                 Source klass = (Source) source.newInstance();
                 Metadata metadata = klass.meta();
+                if (!metadata.isEnabled) continue;
                 sources.add(metadata);
             } catch (IllegalAccessException | java.lang.InstantiationException e) {
                 // do nothing
-                e.printStackTrace();
             }
         }
 

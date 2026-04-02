@@ -98,6 +98,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
     public interface OnHistoryItemClickListener {
         void onHistoryItemClick(History history);
+
+        void onHistoryItemDeleteClick(History history);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -109,6 +111,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
             binding.historyLayout.setOnClickListener(v ->
                     listener.onHistoryItemClick(items.get(getAdapterPosition())));
+
+            binding.deleteHistory.setOnClickListener(v ->
+                    listener.onHistoryItemDeleteClick(items.get(getAdapterPosition()))
+            );
         }
     }
 }

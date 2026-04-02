@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 import in.atulpatare.core.models.Chapter;
@@ -81,5 +83,17 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnHistor
         bundle.putParcelable(Config.KEY_MANGA, manga);
         bundle.putString(Config.KEY_PAGE, Config.PAGE_HISTORY);
         requireActivity().startActivity(new Intent(requireActivity(), ReaderActivity.class).putExtras(bundle));
+    }
+
+    @Override
+    public void onHistoryItemDeleteClick(History history) {
+        if (history != null) {
+            try {
+                AppDatabase.databaseExecutor.execute(() -> AppDatabase.getDatabase().historyDao().deleteById(history.id));
+                Snackbar.make(binding.getRoot(), "Deleted history entry successfully", Snackbar.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Snackbar.make(binding.getRoot(), "Failed to delete history entry", Snackbar.LENGTH_SHORT).show();
+            }
+        }
     }
 }

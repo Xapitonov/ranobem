@@ -117,12 +117,6 @@ public class SearchFragment extends Fragment implements MangaAdapter.OnMangaItem
 
     @SuppressLint("NotifyDataSetChanged")
     public void handleSearch() {
-        if (binding.searchField.getText() == null) {
-            return;
-        }
-        if (filterQuery == null) {
-            return;
-        }
         if (binding.searchField.getText() != null) {
             searchQuery = binding.searchField.getText().toString().trim();
         }

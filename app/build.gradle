@@ -23,9 +23,6 @@ android {
                 arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
-
-        resValue("string", "ad_app_id", values.getProperty("ad_app_id", "ca-app-pub-3940256099942544~3347511713"))
-        resValue("string", "ad_read_manga_video_id", values.getProperty("ad_read_manga_video_id", "ca-app-pub-3940256099942544/5224354917"))
     }
 
     flavorDimensions "version"
@@ -73,8 +70,6 @@ dependencies {
     implementation libs.androidx.navigation.ui
     annotationProcessor libs.compiler
     implementation libs.touchimageview
-    implementation(libs.play.services.ads)
-
 
     def room_version = "2.7.2"
     implementation "androidx.room:room-runtime:$room_version"

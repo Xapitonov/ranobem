@@ -18,9 +18,15 @@ public interface HistoryDao {
     @Query("SELECT * FROM history WHERE id = :id")
     LiveData<History> getById(String id);
 
+    @Query("SELECT * FROM history WHERE mangaId = :mangaId  ORDER BY createdAt DESC")
+    LiveData<List<History>> getByMangaId(String mangaId);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(History history);
 
     @Query("DELETE FROM history WHERE 1")
     void deleteAll();
+
+    @Query("DELETE FROM history WHERE id = :id")
+    void deleteById(String id);
 }

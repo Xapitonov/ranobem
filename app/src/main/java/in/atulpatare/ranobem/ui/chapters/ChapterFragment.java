@@ -31,7 +31,9 @@ import in.atulpatare.core.models.Manga;
 import in.atulpatare.core.util.ListUtils;
 import in.atulpatare.ranobem.R;
 import in.atulpatare.ranobem.config.Config;
+import in.atulpatare.ranobem.database.AppDatabase;
 import in.atulpatare.ranobem.databinding.FragmentChapterBinding;
+import in.atulpatare.ranobem.model.History;
 import in.atulpatare.ranobem.ui.reader.ReaderActivity;
 import in.atulpatare.ranobem.utils.VrfFetcher;
 
@@ -74,7 +76,15 @@ public class ChapterFragment extends BottomSheetDialogFragment implements Chapte
         } else {
             viewModel.getChapters(manga).observe(this, this::setChapter);
         }
+
+        // get history
+        AppDatabase.getDatabase().historyDao().getByMangaId(manga.id).observe(requireActivity(), h -> {
+            if (!h.isEmpty()) {
+                setUpHistory(h);
+            }
+        });
     }
+
 
     @Override
     public void onVrf(String vrf) {
@@ -93,6 +103,12 @@ public class ChapterFragment extends BottomSheetDialogFragment implements Chapte
         binding.chapterList.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.chapterList.addItemDecoration(new DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL));
         binding.chapterList.setAdapter(adapter);
+    }
+
+    private void setUpHistory(List<History> h) {
+        if (adapter != null) {
+            adapter.setHistory(h);
+        }
     }
 
     private void setUpError(String error) {
